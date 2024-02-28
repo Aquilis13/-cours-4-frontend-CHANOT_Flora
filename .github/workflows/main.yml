@@ -39,24 +39,29 @@ jobs:
       - name: Run les tests
         run: npm run format
 
-  # test:
-  #   name: Run les tests
-  #     runs-on: ubuntu-latest
-  #     steps:
-  #       - run: npm run test:e2e:dev
-  #       - run: npm run lint
+  test:
+    name: Run les tests
+    needs: linter_et_formatteur
+    runs-on: ubuntu-latest
+      steps:
+        - run: npm run test:e2e:dev
+        - run: npm run lint
 
-  # build_prod:
-  #   name: Build du dossier de prod
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - run: npm run build
+  build_prod:
+    name: Build du dossier de prod
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - run: npm run build
 
-  # test_e2e:
-  #   name: Recupère le dossier dist et lance les test e2e
-  #     runs-on: ubuntu-latest
-  #     steps:
-  #       - run: npm run test:e2e
+  test_e2e:
+    name: Recupère le dossier dist et lance les test e2e
+    needs: build_prod
+    runs-on: ubuntu-latest
+      steps:
+        - run: npm run test:e2e
+
+
 # jobs:
 #   lint_format:
 #     name: Run le linter et formatteur
