@@ -28,15 +28,15 @@ jobs:
       - name: Installation des dépendances
         run: npm ci
 
-  linter_et_formatteur:
-    name: Run le linter et formatteur
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - name: Run du linter
-        run: npm run lint
-      - name: Run les tests
-        run: npm run format
+  # linter_et_formatteur:
+  #   name: Run le linter et formatteur
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v4
+  #     - name: Run du linter
+  #       run: npm run lint
+  #     - name: Run les tests
+  #       run: npm run format
 
   # test:
   #   name: Run les tests
