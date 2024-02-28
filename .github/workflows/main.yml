@@ -30,6 +30,7 @@ jobs:
 
   linter_et_formatteur:
     name: Run le linter et formatteur
+    needs: setup
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
