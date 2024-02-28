@@ -18,8 +18,61 @@ permissions:
   id-token: write
 
 jobs:
-  hello:
-    name: Echo Hello World
+  setup:
+    name: Setup
     runs-on: ubuntu-latest
     steps:
-      - run: echo Hello World
+      - uses: actions/checkout@v4
+      - name: Setup node
+        uses: actions/setup-node@v4
+      - name: Installation des dépendances
+        run: npm ci
+
+  linter_et_formatteur:
+    name: Run le linter et formatteur
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run du linter
+        run: npm run lint
+      - name: Run les tests
+        run: npm run format
+
+  # test:
+  #   name: Run les tests
+  #     runs-on: ubuntu-latest
+  #     steps:
+  #       - run: npm run test:e2e:dev
+  #       - run: npm run lint
+
+  # build_prod:
+  #   name: Build du dossier de prod
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - run: npm run build
+
+  # test_e2e:
+  #   name: Recupère le dossier dist et lance les test e2e
+  #     runs-on: ubuntu-latest
+  #     steps:
+  #       - run: npm run test:e2e
+# jobs:
+#   lint_format:
+#     name: Run le linter et formatteur
+#     runs-on: ubuntu-latest
+#     steps:
+#       - run: npm run build
+#       - run: npm run test:e2e
+
+#   tests:
+#     name: Run les tests
+#     runs-on: ubuntu-latest
+#     steps:
+#       - run: npm run test:e2e:dev
+#       - run: npm run lint
+  
+#   build_prod:
+#     name: Build le dossier de prod
+#     runs-on: ubuntu-latest
+#     steps:
+#       - run: npm run build
