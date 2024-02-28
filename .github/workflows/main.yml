@@ -58,8 +58,8 @@ jobs:
     name: Recupère le dossier dist et lance les test e2e
     needs: build_prod
     runs-on: ubuntu-latest
-      steps:
-        - run: npm run test:e2e
+    steps:
+      - run: npm run test:e2e
 
 
 # jobs:
