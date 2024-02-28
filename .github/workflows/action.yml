@@ -18,6 +18,15 @@ permissions:
   id-token: write
 
 jobs:
+  setup:
+    name: Setup
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup node
+        uses: actions/setup-node@v4
+      - name: Installation des dépendances
+        run: npm ci
+
   linter_et_formatteur:
     name: Run le linter et formatteur
     runs-on: ubuntu-latest
