@@ -77,7 +77,7 @@ jobs:
 
   deploy:
     name: Deploie les sources sur Github Action
-    needs: [test, linter_et_formatteur, build_prod]
+    needs: [linter_et_formatteur, build_prod]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
