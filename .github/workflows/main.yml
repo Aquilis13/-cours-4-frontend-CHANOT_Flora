@@ -68,8 +68,9 @@ jobs:
       - name: Installation des dépendances
         run: npm ci
       - name: Lance les test e2e
-        run: npm run test:e2e
-        run: npm run test:e2e:dev
+        run: |
+          npm run test:e2e
+          npm run test:e2e:dev
 
 
 # jobs:
