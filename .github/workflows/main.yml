@@ -41,11 +41,10 @@ jobs:
 
   test:
     name: Run les tests
-    needs: linter_et_formatteur
+    needs: setup
     runs-on: ubuntu-latest
     steps:
       - run: npm run test:e2e:dev
-      - run: npm run lint
 
   build_prod:
     name: Build du dossier de prod
