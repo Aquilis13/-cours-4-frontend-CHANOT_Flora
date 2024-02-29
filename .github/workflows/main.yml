@@ -73,28 +73,20 @@ jobs:
       - name: Installation des dépendances
         run: npm ci
       - name: Lance les test e2e
-        run: |
-          npm run test:e2e
-          npm run test:e2e:dev
+        run: npm run test:e2e:dev
 
-
-# jobs:
-#   lint_format:
-#     name: Run le linter et formatteur
-#     runs-on: ubuntu-latest
-#     steps:
-#       - run: npm run build
-#       - run: npm run test:e2e
-
-#   tests:
-#     name: Run les tests
-#     runs-on: ubuntu-latest
-#     steps:
-#       - run: npm run test:e2e:dev
-#       - run: npm run lint
-  
-#   build_prod:
-#     name: Build le dossier de prod
-#     runs-on: ubuntu-latest
-#     steps:
-#       - run: npm run build
+  deploy:
+  name: Deploy to GitHub Pages
+  needs: [test_e2e, test, linter_et_formatteur, build_prod]
+  runs-on: ubuntu-latest
+  steps:
+    - uses: actions/checkout@v4
+    - name: Setup node
+      uses: actions/setup-node@v4
+    - name: Build
+      run: npm run build
+    - name: Deploy
+      uses: actions/gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./dist
