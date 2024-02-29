@@ -76,17 +76,17 @@ jobs:
         run: npm run test:e2e:dev
 
   deploy:
-  name: Deploie les sources sur Github Action
-  needs: [test_e2e, test, linter_et_formatteur, build_prod]
-  runs-on: ubuntu-latest
-  steps:
-    - uses: actions/checkout@v4
-    - name: Setup node
-      uses: actions/setup-node@v4
-    - name: Build
-      run: npm run build
-    - name: Deploy
-      uses: actions/gh-pages@v3
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./dist
+    name: Deploie les sources sur Github Action
+    needs: [test_e2e, test, linter_et_formatteur, build_prod]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup node
+        uses: actions/setup-node@v4
+      - name: Build
+        run: npm run build
+      - name: Deploy
+        uses: actions/gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
