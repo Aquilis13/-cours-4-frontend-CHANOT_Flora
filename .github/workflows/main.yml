@@ -44,6 +44,12 @@ jobs:
     needs: setup
     runs-on: ubuntu-latest
     steps:
+    - uses: actions/checkout@v4
+      - name: Setup node
+        uses: actions/setup-node@v4
+      - name: Installation des dépendances
+        run: npm ci
+      - name: Execution des tests
       - run: npm run test
 
   build_prod:
