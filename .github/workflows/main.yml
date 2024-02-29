@@ -44,7 +44,7 @@ jobs:
     needs: setup
     runs-on: ubuntu-latest
     steps:
-      - run: npm run test:e2e:dev
+      - run: npm run test
 
   build_prod:
     name: Build du dossier de prod
