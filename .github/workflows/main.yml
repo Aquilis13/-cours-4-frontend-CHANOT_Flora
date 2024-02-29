@@ -76,7 +76,7 @@ jobs:
         run: npm run test:e2e:dev
 
   deploy:
-  name: Deploy to GitHub Pages
+  name: Deploie les sources sur Github Action
   needs: [test_e2e, test, linter_et_formatteur, build_prod]
   runs-on: ubuntu-latest
   steps:
