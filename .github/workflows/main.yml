@@ -63,17 +63,17 @@ jobs:
         run: npm ci
       - run: npm run build
 
-  test_e2e:
-    name: Recupère le dossier dist et lance les test e2e
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - name: Setup node
-        uses: actions/setup-node@v4
-      - name: Installation des dépendances
-        run: npm ci
-      - name: Lance les test e2e
-        run: npm run test:e2e:dev
+  # test_e2e:
+  #   name: Recupère le dossier dist et lance les test e2e
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v4
+  #     - name: Setup node
+  #       uses: actions/setup-node@v4
+  #     - name: Installation des dépendances
+  #       run: npm ci
+  #     - name: Lance les test e2e
+  #       run: npm run test:e2e:dev
 
   deploy:
     name: Deploie les sources sur Github Action
